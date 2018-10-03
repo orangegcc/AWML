@@ -1,0 +1,165 @@
+0
+-5.92552 -0.217905 -11.6331
+
+maxits=500, convits=50, dampfact=0.900000
+
+Number of identified clusters: 2
+Fitness (net similarity): -1284.446925
+  Similarities of data points to exemplars: -1158.443573
+  Preferences of selected exemplars: -126.003352
+Number of iterations: 96
+
+2
+-8.41159 0 -16.8232
+
+maxits=500, convits=50, dampfact=0.900000
+
+Number of identified clusters: 57
+Fitness (net similarity): -9227.446506
+  Similarities of data points to exemplars: -3860.854928
+  Preferences of selected exemplars: -5366.591578
+Number of iterations: 89
+
+5
+-4.99913 0 -9.99827
+
+maxits=500, convits=50, dampfact=0.900000
+
+Number of identified clusters: 4
+Fitness (net similarity): -2376.016358
+  Similarities of data points to exemplars: -2156.054478
+  Preferences of selected exemplars: -219.961880
+Number of iterations: 125
+
+6
+-4.86724 0 -9.73447
+
+maxits=500, convits=50, dampfact=0.900000
+
+Number of identified clusters: 4
+Fitness (net similarity): -2380.530711
+  Similarities of data points to exemplars: -2166.372371
+  Preferences of selected exemplars: -214.158340
+Number of iterations: 245
+
+7
+-9.82038 -0.0129413 -19.6278
+
+maxits=500, convits=50, dampfact=0.900000
+
+Number of identified clusters: 2
+Fitness (net similarity): -6006.030667
+  Similarities of data points to exemplars: -5790.241239
+  Preferences of selected exemplars: -215.789428
+Number of iterations: 152
+
+8
+-9.82038 -0.0129413 -19.6278
+
+maxits=500, convits=50, dampfact=0.900000
+
+Number of identified clusters: 2
+Fitness (net similarity): -6003.702392
+  Similarities of data points to exemplars: -5787.912964
+  Preferences of selected exemplars: -215.789428
+Number of iterations: 109
+
+9
+-5.00416 0 -10.0083
+
+maxits=500, convits=50, dampfact=0.900000
+
+Number of identified clusters: 5
+Fitness (net similarity): -941.608616
+  Similarities of data points to exemplars: -666.379926
+  Preferences of selected exemplars: -275.228690
+Number of iterations: 84
+
+10
+-6.62319 0 -13.2464
+
+maxits=500, convits=50, dampfact=0.900000
+
+Number of identified clusters: 6
+Fitness (net similarity): -2908.000818
+  Similarities of data points to exemplars: -2325.159666
+  Preferences of selected exemplars: -582.841152
+Number of iterations: 168
+
+11
+-4.78756 0 -9.57513
+
+maxits=500, convits=50, dampfact=0.900000
+
+Number of identified clusters: 2
+Fitness (net similarity): -649.340766
+  Similarities of data points to exemplars: -544.014368
+  Preferences of selected exemplars: -105.326398
+Number of iterations: 104
+
+12
+-8.41159 0 -16.8232
+
+maxits=500, convits=50, dampfact=0.900000
+
+Number of identified clusters: 1
+Fitness (net similarity): -8001.929252
+  Similarities of data points to exemplars: -4023.249289
+  Preferences of selected exemplars: -3978.679963
+Number of iterations: 433
+
+13
+-4.61926 -0.431495 -8.80703
+
+maxits=500, convits=50, dampfact=0.900000
+
+Number of identified clusters: 1
+Fitness (net similarity): -137.459581
+  Similarities of data points to exemplars: -90.962647
+  Preferences of selected exemplars: -46.496934
+Number of iterations: 74
+
+14
+-5.00416 0 -10.0083
+
+maxits=500, convits=50, dampfact=0.900000
+
+Number of identified clusters: 5
+Fitness (net similarity): -928.410198
+  Similarities of data points to exemplars: -653.181508
+  Preferences of selected exemplars: -275.228690
+Number of iterations: 82
+
+15
+-6.62319 0 -13.2464
+
+maxits=500, convits=50, dampfact=0.900000
+
+Number of identified clusters: 6
+Fitness (net similarity): -2783.514089
+  Similarities of data points to exemplars: -2346.383225
+  Preferences of selected exemplars: -437.130864
+Number of iterations: 107
+
+16
+-4.78756 0 -9.57513
+
+maxits=500, convits=50, dampfact=0.900000
+
+Number of identified clusters: 2
+Fitness (net similarity): -650.281493
+  Similarities of data points to exemplars: -544.955095
+  Preferences of selected exemplars: -105.326398
+Number of iterations: 86
+
+17
+-6.3058 -0.166305 -12.4453
+
+maxits=500, convits=50, dampfact=0.900000
+
+Number of identified clusters: 2
+Fitness (net similarity): -1137.255852
+  Similarities of data points to exemplars: -1001.854280
+  Preferences of selected exemplars: -135.401572
+Number of iterations: 85
+
