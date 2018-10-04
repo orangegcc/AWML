@@ -1,7 +1,8 @@
 # AWML
 ## Data
 We provide FB15k and WN18 datasets used for the visualization and evaluation in the folder data_FB15k/ and data_WN18 respectively, 
-using the input format required by our codes. These two datasets are published by "Translating Embeddings for Modeling Multi-relational Data (2013)."
+using the input format required by our codes.  
+These two datasets are published by "Translating Embeddings for Modeling Multi-relational Data (2013)."  
 The original dataset can be downloaded from <https://everest.hds.utc.fr/doku.php?id=en:transe>, containing five files in the following format:  
 
 Datasets are required in the following format, containing 16 files:  
