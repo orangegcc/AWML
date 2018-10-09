@@ -198,7 +198,7 @@ class LayerMat(object):
 
 class LayerTrans(object):
     """
-    Class for a layer with two input vectors that performs the sum of 
+    Class for a layer with two input vectors that performs the sum of
     of the 'left member' and 'right member'i.e. translating x by y.
     """
 
@@ -212,7 +212,7 @@ class LayerTrans(object):
 
 class LayerdMat(object):
     """
-    
+
     """
 
     def __init__(self):
@@ -676,7 +676,7 @@ def RankRightFnIdxBi(embeddings, leftop, rightop, subtensorspec=None):
     W = embeddings[1]
     rel_matricesl = embeddings[2]
     rel_matricesr = embeddings[3]
-    
+
     # Inputs
     idxl = T.iscalar('idxl')
     idxo = T.iscalar('idxo')
@@ -684,7 +684,7 @@ def RankRightFnIdxBi(embeddings, leftop, rightop, subtensorspec=None):
     lhs = (embedding.E[:, idxl]).reshape((1, embedding.D))
     relmatricesl = (rel_matricesl.E[:, idxo]).reshape((1, rel_matricesl.D))
     relmatricesr = (rel_matricesr.E[:, idxo]).reshape((1, rel_matricesr.D))
-    
+
     if subtensorspec is not None:
         # We compute the score only for a subset of entities
         rhs = (embedding.E[:, :subtensorspec]).T
@@ -692,7 +692,7 @@ def RankRightFnIdxBi(embeddings, leftop, rightop, subtensorspec=None):
         rhs = embedding.E.T
 
     W_m = W.E.reshape((1, W.D))
-    
+
     expP = leftop(lhs, relmatricesl)+leftop(rhs, relmatricesr)+leftop(lhs, rightop(rhs, W_m))
     simi = -T.sum(expP, axis=1)
     """
@@ -704,8 +704,8 @@ def RankRightFnIdxBi(embeddings, leftop, rightop, subtensorspec=None):
     :output simi: vector of score values.
     """
     return theano.function([idxl, idxo], [simi], on_unused_input='ignore')
-    
-    
+
+
 def RankRightFnIdxTri(embeddings, leftop, rightop, subtensorspec=None):
     """
     This function returns a Theano function to measure the similarity score of
@@ -723,20 +723,20 @@ def RankRightFnIdxTri(embeddings, leftop, rightop, subtensorspec=None):
     """
     embedding = embeddings[0]
     rel_matrices = embeddings[1]
-    
+
     # Inputs
     idxl = T.iscalar('idxl')
     idxo = T.iscalar('idxo')
     # Graph
     lhs = (embedding.E[:, idxl]).reshape((1, embedding.D))
     relmatrices = (rel_matrices.E[:, idxo]).reshape((1, rel_matrices.D))
-    
+
     if subtensorspec is not None:
         # We compute the score only for a subset of entities
         rhs = (embedding.E[:, :subtensorspec]).T
     else:
         rhs = embedding.E.T
-    
+
     expP = leftop(lhs, rightop(rhs, relmatrices))
     simi = -T.sum(expP, axis=1)
     """
@@ -748,8 +748,8 @@ def RankRightFnIdxTri(embeddings, leftop, rightop, subtensorspec=None):
     :output simi: vector of score values.
     """
     return theano.function([idxl, idxo], [simi], on_unused_input='ignore')
-    
-    
+
+
 def RankRightFnIdxTATEC(embeddings, leftopbi, leftoptri, rightopbi, rightoptri, subtensorspec=None):
     """
     This function returns a Theano function to measure the similarity score of
@@ -804,8 +804,8 @@ def RankRightFnIdxTATEC(embeddings, leftopbi, leftoptri, rightopbi, rightoptri, 
     :output simi: vector of score values.
     """
     return theano.function([idxl, idxo], [simi], on_unused_input='ignore')
-    
-    
+
+
 def RankLeftFnIdx(fnsim, embeddings, leftop, rightop, subtensorspec=None):
     """
     This function returns a Theano function to measure the similarity score of
@@ -911,7 +911,7 @@ def RankLeftFnIdxBi(embeddings, leftop, rightop, subtensorspec=None):
     W = embeddings[1]
     rel_matricesl = embeddings[2]
     rel_matricesr = embeddings[3]
-    
+
     # Inputs
     idxr = T.iscalar('idxr')
     idxo = T.iscalar('idxo')
@@ -919,7 +919,7 @@ def RankLeftFnIdxBi(embeddings, leftop, rightop, subtensorspec=None):
     rhs = (embedding.E[:, idxr]).reshape((1, embedding.D))
     relmatricesl = (rel_matricesl.E[:, idxo]).reshape((1, rel_matricesl.D))
     relmatricesr = (rel_matricesr.E[:, idxo]).reshape((1, rel_matricesr.D))
-    
+
     if subtensorspec is not None:
         # We compute the score only for a subset of entities
         lhs = (embedding.E[:, :subtensorspec]).T
@@ -940,7 +940,7 @@ def RankLeftFnIdxBi(embeddings, leftop, rightop, subtensorspec=None):
     """
     return theano.function([idxr, idxo], [simi],
             on_unused_input='ignore')
-            
+
 
 def RankLeftFnIdxTri(embeddings, leftop, rightop, subtensorspec=None):
     """
@@ -959,14 +959,14 @@ def RankLeftFnIdxTri(embeddings, leftop, rightop, subtensorspec=None):
     """
     embedding = embeddings[0]
     rel_matrices = embeddings[1]
-    
+
     # Inputs
     idxr = T.iscalar('idxr')
     idxo = T.iscalar('idxo')
     # Graph
     rhs = (embedding.E[:, idxr]).reshape((1, embedding.D))
     relmatrices = (rel_matrices.E[:, idxo]).reshape((1, rel_matrices.D))
-    
+
     if subtensorspec is not None:
         # We compute the score only for a subset of entities
         lhs = (embedding.E[:, :subtensorspec]).T
@@ -985,8 +985,8 @@ def RankLeftFnIdxTri(embeddings, leftop, rightop, subtensorspec=None):
     """
     return theano.function([idxr, idxo], [simi],
             on_unused_input='ignore')
-            
-            
+
+
 def RankLeftFnIdxTATEC(embeddings, leftopbi, leftoptri, rightopbi, rightoptri, subtensorspec=None):
     """
     This function returns a Theano function to measure the similarity score of
@@ -1008,7 +1008,7 @@ def RankLeftFnIdxTATEC(embeddings, leftopbi, leftoptri, rightopbi, rightoptri, s
     rel_matricesr = embeddings[3]
     embeddingtri = embeddings[4]
     rel_matricestri = embeddings[5]
-    
+
     # Inputs
     idxr = T.iscalar('idxr')
     idxo = T.iscalar('idxo')
@@ -1246,7 +1246,7 @@ def ForwardFn(fnsim, embeddings, leftop, rightop, marge=1.0):
                            on_unused_input='ignore')
 
 
-def TrainFn1Member(fnsim, embeddings, density, marw, marb, leftop, rightop, marge=1.0, rel=True):
+def TrainFn1Member(fnsim, embeddings, density, marw, marb, leftop, rightop, beta=24.5, marge=1.0, rel=True):
     """
     This function returns a theano function to perform a training iteration,
     contrasting positive and negative triplets. members are given as sparse
@@ -1287,9 +1287,9 @@ def TrainFn1Member(fnsim, embeddings, density, marw, marb, leftop, rightop, marg
     # Negative 'right' member
     simirn = fnsim(leftop(lhs, rell), rightop(rhsn, relr))
     # pdb.set_trace()
-    marl = (T.nnet.sigmoid(T.dot(marw.E, density.E) + marb.E) + 24.5) / 50
+    marl = (T.nnet.sigmoid(T.dot(marw.E, density.E) + marb.E) + beta) / (2*beta+1)
     margl = S.dot(marl, inpo)
-    marr = (T.nnet.sigmoid(T.dot(marw.E, density.E) + marb.E) + 24.5) / 50
+    marr = (T.nnet.sigmoid(T.dot(marw.E, density.E) + marb.E) + beta) / (2*beta+1)
     margr = S.dot(marr, inpo)
 
     costl, outl = margincost(simi*margl, similn*(1-margl), marge)
@@ -1388,7 +1388,7 @@ def TrainFn1MemberBi(embeddings, leftop, rightop, marge=1.0):
     W = embeddings[1]
     rel_matricesl = embeddings[2]
     rel_matricesr = embeddings[3]
-    
+
     # Inputs
     inpr = S.csr_matrix()
     inpl = S.csr_matrix()
@@ -1411,11 +1411,11 @@ def TrainFn1MemberBi(embeddings, leftop, rightop, marge=1.0):
     relmatricesrn = S.dot(rel_matricesr.E, inpo).T
 
     W_m = W.E.reshape((1, W.D))
-    
+
     # Positive triplet score
     expP = leftop(lhs, relmatricesl)+leftop(rhs, relmatricesr)+leftop(lhs, rightop(rhs, W_m))
     simi = -T.sum(expP, axis=1)
-    
+
     # Negative triple score
     expNl = leftop(lhsn, relmatricesl)+leftop(rhs, relmatricesr)+leftop(lhsn, rightop(rhs, W_m))
     expNr = leftop(lhs, relmatricesl)+leftop(rhsn, relmatricesr)+leftop(lhs, rightop(rhsn, W_m))
@@ -1448,7 +1448,7 @@ def TrainFn1MemberBi(embeddings, leftop, rightop, marge=1.0):
     gradients_embeddingW = T.grad(cost, W.E)
     newW = W.E - lr * gradients_embeddingW
     updates.update({W.E: newW})
-    
+
     """
     Theano function inputs.
     :input lrembeddings: learning rate for the embeddings.
@@ -1494,7 +1494,7 @@ def TrainFn1MemberTri(embeddings, leftop, rightop, marge=1.0):
     """
     embedding = embeddings[0]
     rel_matrices = embeddings[1]
-    
+
     # Inputs
     inpr = S.csr_matrix()
     inpl = S.csr_matrix()
@@ -1515,11 +1515,11 @@ def TrainFn1MemberTri(embeddings, leftop, rightop, marge=1.0):
     rhsn = S.dot(embedding.E, inprn).T
     relmatricesn = S.dot(rel_matrices.E, inpo).T
 
-    
+
     # Positive triplet score
     expP = leftop(lhs, rightop(rhs, relmatrices))
     simi = -T.sum(expP, axis=1)
-    
+
     # Negative triple score
     expNl = leftop(lhsn, rightop(rhs, relmatrices))
     expNr = leftop(lhs, rightop(rhsn, relmatrices))
@@ -1546,7 +1546,7 @@ def TrainFn1MemberTri(embeddings, leftop, rightop, marge=1.0):
     gradients_embeddingrelMat = T.grad(cost, rel_matrices.E)
     newrelMat = rel_matrices.E - lr * gradients_embeddingrelMat
     updates.update({rel_matrices.E: newrelMat})
-    
+
     """
     Theano function inputs.
     :input lrembeddings: learning rate for the embeddings.
@@ -1572,8 +1572,8 @@ def TrainFn1MemberTri(embeddings, leftop, rightop, marge=1.0):
     """
     return theano.function(list_in, [T.mean(cost), T.mean(out)],
                 updates=updates, on_unused_input='ignore')
-                
-                
+
+
 def TrainFn1MemberTATEC(embeddings, leftopbi, leftoptri, rightopbi, rightoptri, marge=1.0):
     """
     This function returns a theano function to perform a training iteration,
@@ -1596,7 +1596,7 @@ def TrainFn1MemberTATEC(embeddings, leftopbi, leftoptri, rightopbi, rightoptri, 
     rel_matricesr = embeddings[3]
     embeddingtri = embeddings[4]
     rel_matricestri = embeddings[5]
-    
+
     # Inputs
     inpr = S.csr_matrix()
     inpl = S.csr_matrix()
@@ -1605,7 +1605,7 @@ def TrainFn1MemberTATEC(embeddings, leftopbi, leftoptri, rightopbi, rightoptri, 
     inprn = S.csr_matrix()
     lrbi = T.scalar('lrbi')
     lrtri = T.scalar('lrtri')
-    
+
     ## Positive triplet
     lhsbi = S.dot(embeddingbi.E, inpl).T
     rhsbi = S.dot(embeddingbi.E, inpr).T
@@ -1625,11 +1625,11 @@ def TrainFn1MemberTATEC(embeddings, leftopbi, leftoptri, rightopbi, rightoptri, 
     reltrin= S.dot(rel_matricestri.E, inpo).T
 
     W_m = W.E.reshape((1, W.D))
-    
+
     # Positive triplet score
     expP = leftopbi(lhsbi, relmatricesl)+leftopbi(rhsbi, relmatricesr)+leftopbi(lhsbi, rightopbi(rhsbi, W_m))+ leftoptri(lhstri, rightoptri(rhstri, reltri))
     simi = -T.sum(expP, axis=1)
-    
+
     # Negative triple score
     expNl = leftopbi(lhsbin, relmatricesl)+leftopbi(rhsbi, relmatricesr)+leftopbi(lhsbin, rightopbi(rhsbi, W_m))+ leftoptri(lhstrin, rightoptri(rhstri, reltri))
     expNr = leftopbi(lhsbi, relmatricesl)+leftopbi(rhsbin, relmatricesr)+leftopbi(lhsbi, rightopbi(rhsbin, W_m))+ leftoptri(lhstri, rightoptri(rhstrin, reltri))
@@ -1640,7 +1640,7 @@ def TrainFn1MemberTATEC(embeddings, leftopbi, leftoptri, rightopbi, rightoptri, 
     costr, outr = margincost(simi, simirn, marge)
 
     cost = costl + costr
-    out = T.concatenate([outl, outr]) 
+    out = T.concatenate([outl, outr])
 
     # List of inputs of the function
     list_in = [lrbi, lrtri, inpl, inpr, inpo, inpln, inprn]
@@ -1668,7 +1668,7 @@ def TrainFn1MemberTATEC(embeddings, leftopbi, leftoptri, rightopbi, rightoptri, 
     gradients_embeddingW = T.grad(cost, W.E)
     newW = W.E - lrbi * gradients_embeddingW
     updates.update({W.E: newW})
-    
+
     """
     Theano function inputs.
     :input lrembeddings: learning rate for the embeddings.
@@ -1694,7 +1694,7 @@ def TrainFn1MemberTATEC(embeddings, leftopbi, leftoptri, rightopbi, rightoptri, 
     """
     return theano.function(list_in, [T.mean(cost), T.mean(out)],
                 updates=updates, on_unused_input='ignore')
-                
+
 
 def ForwardFn1Member(fnsim, embeddings, leftop, rightop, marge=1.0, rel=True):
     """
@@ -1811,7 +1811,7 @@ def FilteredRankingScoreIdx(sl, sr, idxl, idxr, idxo, true_triples):
         il=np.argwhere(true_triples[:,0]==l).reshape(-1,) #返回需要测试的三元组的头实体、关系、尾实体分别在所有正例三元组中的序号，得到il、io、ir
         io=np.argwhere(true_triples[:,1]==o).reshape(-1,)
         ir=np.argwhere(true_triples[:,2]==r).reshape(-1,)
- 
+
         inter_l = [i for i in ir if i in io]
         rmv_idx_l = [true_triples[i,0] for i in inter_l if true_triples[i,0] != l]
         scores_l = (sl(r, o)[0]).flatten()
@@ -1824,7 +1824,7 @@ def FilteredRankingScoreIdx(sl, sr, idxl, idxr, idxo, true_triples):
         scores_r[rmv_idx_r] = -np.inf
         errr += [np.argsort(np.argsort(-scores_r)).flatten()[r] + 1]
     return errl, errr
-    
+
 def FilteredRankingScoreIdx_train(sl, sr, idxl, idxr, idxo, true_triples, subrel2rel):
     """
     This function computes the rank list of the lhs and rhs, over a list of
@@ -1839,7 +1839,7 @@ def FilteredRankingScoreIdx_train(sl, sr, idxl, idxr, idxo, true_triples, subrel
     errl = []
     errr = []
     #pdb.set_trace()
-    for l, o, r in zip(idxl, idxo, idxr): #tuple  #此处的r是0~2500关系字典中的序号	
+    for l, o, r in zip(idxl, idxo, idxr): #tuple  #此处的r是0~2500关系字典中的序号
 	oo = subrel2rel[o+40943]    #聚类前关系的序号
 
         il=np.argwhere(true_triples[:,0]==l).reshape(-1,) #返回需要测试的三元组的头实体、关系、尾实体分别在所有正例三元组中的位置，得到il、io、ir
@@ -2019,7 +2019,7 @@ def RankingScoreRelIdx_test(so, idxl, idxr, idxo, rel2subrel):
 
     return erro
 
-    
+
 def RankingScoreRightIdx(sr, idxl, idxr, idxo):
     """
     This function computes the rank list of the rhs, over a list of lhs, rhs

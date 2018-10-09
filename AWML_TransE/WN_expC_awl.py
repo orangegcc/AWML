@@ -248,7 +248,7 @@ def FB15kexp(state, channel):
         rankrfunc = RankRightFnIdxTATEC(embeddings, leftopbi, leftoptri, rightopbi, rightoptri, subtensorspec=state.Nsyn)
     else:
 	#pdb.set_trace()
-        trainfunc = TrainFn1Member(simfn, embeddings, density, marw, marb, leftop, rightop, marge=state.marge, rel=True)
+        trainfunc = TrainFn1Member(simfn, embeddings, density, marw, marb, leftop, rightop, beta = state.beta, marge=state.marge, rel=True)
         ranklfunc = RankLeftFnIdx(simfn, embeddings, leftop, rightop, subtensorspec=state.Nsyn)
         rankrfunc = RankRightFnIdx(simfn, embeddings, leftop, rightop, subtensorspec=state.Nsyn)
 	#ranklfuncvt = RankLeftFnIdxvt(simfn, embeddings, leftop, rightop, subtensorspec=state.Nsyn)
@@ -430,7 +430,7 @@ def FB15kexp(state, channel):
 def launch(datapath='data/', dataset='WN', Nent=40991,
         Nsyn=40943, Nrel=48, loadmodel=False, loademb=False, op='Unstructured',
         simfn='Dot', ndim=20, nhid=20, marge=1., lremb=0.1, lrparam=1.,
-        nbatches=100, totepochs=5000, test_all=1, neval=50, seed=123,
+        nbatches=100, totepochs=5000, test_all=1, neval=50, seed=123, beta=24.5
         savepath='.', pretrain='True'):
 
     # Argument of the experiment script
@@ -460,6 +460,7 @@ def launch(datapath='data/', dataset='WN', Nent=40991,
     state.seed = seed
     state.savepath = savepath
     state.pretrain = pretrain
+    state.beta = beta
 
     if not os.path.isdir(state.savepath):
         os.mkdir(state.savepath)

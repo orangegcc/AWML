@@ -35,10 +35,9 @@ For pre-traning, you need to follow the steps below:
 
 For clustering, you need to follow the steps below:  
 1. call the program best_valid_model.py to obtain the .txt file for the embeddings.
-2. call the program run.sh and clustparse.py in folder cluster/ to cluster all the entity-pair offsets for each knowledge category to cunstruct clustered relation set.
-AP clustering algorithm is published by "Clustering by Passing Messages Between Data Points."
-The source codes of AP clustering can be downloaded from:  
-[Download](https://github.com/thunlp/KB2E/tree/master/cluster)
+2. call the program run.sh and clustparse.py in folder cluster/ to cluster all the entity-pair offsets for each knowledge category to cunstruct clustered relation set.  
+AP clustering algorithm is published by "Clustering by Passing Messages Between Data Points." [Download](https://github.com/thunlp/KB2E/tree/master/cluster)  
+Note that, we provide our clustering result in k.pkl file.
 3. call the program rel2subrel_apC.py and parse_trainC.py to obtain the clustered training matrices for head, relation and tail for the training of our proposed framework AWML:  
 * TransE: FB15k-train-inpl/inpo/inpr_C.pkl for FB15k and WN-train-inpl/inpo/inpr_C.pkl for WN18.  
 * TransE(AdaGrad): FB15k-train_C.pkl for FB15k and WN-train_C.pkl for WN18 in folder AWML_TransEmin/data/.  
@@ -56,6 +55,7 @@ For training the KRL model incorporated by our proposed framework, you need to c
 
 ### Testing the model
 We provide the embeddings obtained by all the models used for visualization and evaluation in the folder fb15k_embeddings/ and wn18_embeddings/.  
+We also provide the parameters of AWML algorithm for the above embedding result in the corresponding training file.  
 For testing in the tasks of link prediction and triplet classification, you need to call the program below:  
 * Link prediction: TransC_relrank_lp.py for filtered setting and TransC_relrank_lp_raw.py for raw setting.  
 * Triplet classification: TransC_relrank_tc.py for filtered setting and TransC_relrank_tc_raw.py for raw setting.  
@@ -66,9 +66,7 @@ We also provide evaluation results .out file for all the models in folder AWML_T
 ### Visualization
 For visualizing the embeddings of entity-pair offsets, you need to follow the steps below:
 1. call the program tsne_transe.py to obtain 2-dim vectors of all the entities and relations.  
-The dimensionality reduction algorithm of t-SNE is published by 
-The source codes of t-SNE algorithm can be downloaded from:  
-[Download](http://ticc.uvt.nl/˜lvdrmaaten/tsne)
+The dimensionality reduction algorithm of t-SNE is published by "Visualizing Data using t-SNE" [Download](http://ticc.uvt.nl/˜lvdrmaaten/tsne)
 2. call the program dif_2dim.py to obtain all the golden entity-pair offsets.
 3. call the program dif_2dim_random.py to obtain all the synthetic entity-pair offsets.
 4. call the program rel_plot_posneg_random.py to obtain the visualizing results.
