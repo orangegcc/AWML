@@ -39,6 +39,7 @@ For clustering, you need to follow the steps below:
 AP clustering algorithm is published by "Clustering by Passing Messages Between Data Points." [Download](https://github.com/thunlp/KB2E/tree/master/cluster)  
 Note that, we provide our clustering result in k.pkl file.
 3. call the program rel2subrel_apC.py and parse_trainC.py to obtain the clustered training matrices for head, relation and tail for the training of our proposed framework AWML:  
+We provide the dictionary of relation to sub-relation in rel2subrel_apC.pkl and subrel2rel_apC.pkl.
 * TransE: FB15k-train-inpl/inpo/inpr_C.pkl for FB15k and WN-train-inpl/inpo/inpr_C.pkl for WN18.  
 * TransE(AdaGrad): FB15k-train_C.pkl for FB15k and WN-train_C.pkl for WN18 in folder AWML_TransEmin/data/.  
 * TransR: FB15k-train-inpl/inpo/inpr_RC.pkl for FB15k and WN-train-inpl/inpo/inpr_RC.pkl for WN18.  
@@ -49,16 +50,16 @@ For calculating the category-specific density, you need to follow the steps belo
 2. call the program density_rel.py to calculate each category-specific density.  
 
 For training the KRL model incorporated by our proposed framework, you need to call the training program below:
-1. TransE: FB15k/WN_TransC_aml/awl_random/pretrain.py  
+1. TransE: CTransE_aml/awl_random/pretrain.py  
 2. TransE(AdaGrad): learnC_aml/awl_random/pretrain.py  
-3. TransR: FB15k/WN_TransRC_aml/awl_random/pretrain.py  
+3. TransR: CTransR_aml/awl_random/pretrain.py  
 
 ### Testing the model
 We provide the embeddings obtained by all the models used for visualization and evaluation in the folder fb15k_embeddings/ and wn18_embeddings/.  
 We also provide the parameters of AWML algorithm for the above embedding result in the corresponding training file.  
 For testing in the tasks of link prediction and triplet classification, you need to call the program below:  
-* Link prediction: TransC_relrank_lp.py for filtered setting and TransC_relrank_lp_raw.py for raw setting.  
-* Triplet classification: TransC_relrank_tc.py for filtered setting and TransC_relrank_tc_raw.py for raw setting.  
+* Link prediction: relrank_lp.py for filtered setting and relrank_lp_raw.py for raw setting.  
+* Triplet classification: relrank_tc.py for filtered setting and relrank_tc_raw.py for raw setting.  
 Please note that, for TransE(AdaGrad) model, the testing process follows the training process in the training file.  
 
 We also provide evaluation results .out file for all the models in folder AWML_TransE/, AWML_TransEmin/, AWML__TransR/.
