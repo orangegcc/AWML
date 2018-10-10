@@ -2,10 +2,10 @@
 ## Data
 We provide FB15k and WN18 datasets used for the visualization and evaluation in the folder data_FB15k/ and data_WN18 respectively, 
 using the input format required by our codes.  
-FB15k is published by "Translating Embeddings for Modeling Multi-relational Data (2013)." [Download](https://everest.hds.utc.fr/doku.php?id=en:transe)  
-WN18 is published by "A Semantic Matching Energy Function for Learning with Multi-relational Data (2012)." [Download](https://github.com/glorotxa/WakaBST)  
+* FB15k is published by "Translating Embeddings for Modeling Multi-relational Data (2013)." [Download](https://everest.hds.utc.fr/doku.php?id=en:transe)  
+* WN18 is published by "A Semantic Matching Energy Function for Learning with Multi-relational Data (2012)." [Download](https://github.com/glorotxa/WakaBST)  
 The original data can be downloaded from:  
-[Download](https://everest.hds.utc.fr/doku.php?id=en:transe)
+<https://everest.hds.utc.fr/doku.php?id=en:transe>
 
 
 Datasets are required in the following format, containing 16 files:  
@@ -16,7 +16,10 @@ Datasets are required in the following format, containing 16 files:
 * -valid-lhs.pkl, -valid-rel.pkl, -valid-rhs.pkl: validation matrices for head, relation and tail respectively.
 * -test-lhs.pkl, -test-rel.pkl, -test-rhs.pkl: testing matrices for head, relation and tail respectively.
 * entity2idx.pkl or synset2idx.pkl, idx2entity.pkl or synset2idx.pkl: key-value pairs for entity/relations-id.
-* entity2id.txt, relation2id.txt: key-value files, format (entity/relation, id)
+* entity2id.txt, relation2id.txt: key-value files, format (entity/relation, id)  
+
+
+We also provide the dataset statistics on the existing frequency of relations and entities for FB15k and WN18.  
 
 Please note that, for TransE and TransR, the dataset required by our codes is in the folder data_FB15k/ and data_WN18/,  
 while for TransE(AdaGrad), the dataset required by our codes is in the folder AWML_TransEmin/data/.
@@ -55,7 +58,7 @@ For training the KRL model incorporated by our proposed framework, you need to c
 3. TransR: CTransR_aml/awl_random/pretrain.py  
 
 ### Testing the model
-We provide the embeddings obtained by all the models used for visualization and evaluation in the folder fb15k_embeddings/ and wn18_embeddings/.  
+iWe provide the embeddings obtained by all the models used for visualization and evaluation in the folder fb15k_embeddings/ and wn18_embeddings/.  
 We also provide the parameters of AWML algorithm for the above embedding result in the corresponding training file.  
 For testing in the tasks of link prediction and triplet classification, you need to call the program below:  
 * Link prediction: relrank_lp.py for filtered setting and relrank_lp_raw.py for raw setting.  
